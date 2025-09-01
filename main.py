@@ -87,5 +87,10 @@ async def on_raw_reaction_add(payload):
 # Start keep_alive (optional for fallback)
 keep_alive()
 
-# Run bot
-bot.run(os.environ["TOKEN"])
+import os
+
+token = os.environ.get("TOKEN")
+if token:
+    bot.run(token)
+else:
+    print("❌ TOKEN not found in environment variables!")
